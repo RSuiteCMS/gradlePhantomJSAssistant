@@ -8,7 +8,7 @@ def orgGroupId = { url ->
 }(orgVcsUrl)
 def pluginId = "${orgGroupId}.${project.name}"
 group = orgGroupId
-version = '0.3-alpha'
+version = '0.4'
 
 pluginBundle {
 	website = projVcsUrl
