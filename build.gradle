@@ -1,0 +1,21 @@
+plugins {
+	id "com.gradle.plugin-publish" version "0.9.0"
+	id "com.madvay.tools.build.gitbuildinfo" version "0.1.2-alpha"
+}
+
+
+apply plugin: 'maven'
+apply plugin: 'java'
+
+apply from: 'buildscripts/identity.gradle'
+repositories {
+	mavenCentral();
+}
+dependencies {
+	compile gradleApi()
+	compile 'org.apache.commons:commons-compress:1.5'
+	compile 'commons-io:commons-io:2.4'
+}
+task wrapper (type: Wrapper) {
+	gradleVersion = '2.4'
+}

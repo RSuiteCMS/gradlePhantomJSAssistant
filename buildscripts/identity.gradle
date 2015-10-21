@@ -1,0 +1,34 @@
+def orgUserId = "rsuiteCMS"
+def orgVcsUrl = "https://www.github.com/${orgUserId}";
+def projVcsUrl = "${orgVcsUrl}/${project.name}";
+def orgGroupId = { url ->
+	String[] parts = url.replaceAll("^https?://", "").split('/');
+	parts[0] = parts[0].replaceAll('^www\\.', '').split('\\.').reverse().join('.');
+	return parts.join('.');
+}(orgVcsUrl)
+def pluginId = "${orgGroupId}.${project.name}"
+group = orgGroupId
+version = '0.3-alpha'
+
+pluginBundle {
+	website = projVcsUrl
+	vcsUrl = projVcsUrl
+	description = '''
+		Gradle plugin to configure PhantomJS for automated testing.  Automatically
+		finds the requested version of PhantomJS for the running platform, downloads
+		it, and configures the `test` task to make use of the binary.
+	'''
+	tags = ['phantomjs', 'selenium', 'test', 'selenide']
+	plugins {
+		gradlePhantomjsAssistant {
+			id = pluginId
+			displayName = 'PhantomJS configurator Gradle plugin'
+		}
+	}
+}
+
+buildStamp {
+	repoBaseUrl "${projVcsUrl}/tree/"
+	packageName pluginId
+	
+}
