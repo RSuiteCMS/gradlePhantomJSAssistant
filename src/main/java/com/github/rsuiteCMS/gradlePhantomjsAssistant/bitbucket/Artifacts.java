@@ -79,6 +79,9 @@ public class Artifacts extends ArrayList<Artifact> {
 		try {
 			is = url.openStream();
 			copy(is, baos);
+		} catch (IOException ioe) {
+			System.err.println("Failed URL: " + url.toString());
+			throw ioe;
 		} finally {
 			closeQuietly(is);
 		}
