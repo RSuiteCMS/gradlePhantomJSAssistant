@@ -17,4 +17,12 @@ public class BitbucketFetchTest {
 		assertTrue("Binary is not executable", binary.canExecute());
 		tmp.deleteOnExit();
 	}
+
+	@Test
+	public void testLocalExistanceOfPhantom() throws Exception{
+		File tmp = File.createTempFile("phantomjs", "");
+		tmp.delete();
+		PhantomJSConfig.deployBitbucket("2.1.1", tmp);
+		assertTrue(PhantomJSConfig.haveBitbucket("2.1.1",tmp));
+	}
 }
