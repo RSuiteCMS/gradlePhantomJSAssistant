@@ -20,6 +20,11 @@ public enum Platform {
 		}
 		return null;
 	}
+
+	public String getValue() {
+		return value;
+	}
+
 	public final static Platform CURRENT;
 	static {
 		if (OS.isWindows) {
