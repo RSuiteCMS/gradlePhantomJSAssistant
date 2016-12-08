@@ -67,7 +67,7 @@ public class PhantomJSConfig {
 		bitbucket(null);
 	}
 	public static File findBitbucket(File phantomHome, Artifact phantomJS) {
-		File bin = new File(phantomHome, phantomJS.getName() + "-" + phantomJS.getVersion() + "-" + phantomJS.getPlatform() + "/bin/" + phantomBinary);
+		File bin = new File(phantomHome, phantomJS.getName() + "-" + phantomJS.getVersion() + "-" + phantomJS.getPlatform().getValue() + "/bin/" + phantomBinary);
 		if (bin.exists()) {
 			return bin;
 		}
